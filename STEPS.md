@@ -32,15 +32,20 @@ Kubernetes The Hard Way가 같은 과정을 VM 위에서 진행합니다. 여기
 - [ ] 14. Rust: NodePool 컨트롤러, 10번 통과 → `14-rust-nodepool.md`
 - [ ] 15. 두 구현 비교 → `15-go-vs-rust.md`
 
-## Phase 4. 운영 기능 (Go 먼저, Rust가 뒤따름)
+## Phase 4. EKS가 사용자에게 주는 기능 (Go 먼저, Rust가 뒤따름)
 
-- [ ] 16. 노드 자동 복구와 스케일 → `16-repair-scale.md`
-- [ ] 17. 버전 업그레이드: 컨트롤 플레인을 먼저, 노드를 나중에, version skew 정책 준수 → `17-upgrade.md`
-- [ ] 18. etcd 백업과 복구 → `18-etcd-backup.md`
+- [ ] 16. 컨트롤 플레인 고가용성: apiserver 2개, etcd 3개 · 확인: apiserver 파드 하나와 etcd 멤버 하나를 지워도 `kubectl`이 계속 동작 → `16-control-plane-ha.md`
+- [ ] 17. 노드 자동 복구와 스케일 (EKS managed node group에 해당) → `17-repair-scale.md`
+- [ ] 18. 버전 업그레이드: 컨트롤 플레인을 먼저, 노드를 나중에, version skew 정책 준수 → `18-upgrade.md`
+- [ ] 19. 애드온 관리: CoreDNS, CNI, kube-proxy의 설치와 버전을 컨트롤러가 관리 (EKS add-on에 해당) → `19-addons.md`
+- [ ] 20. 사용자 인증과 접근 권한: 외부 사용자 신원을 테넌트 RBAC에 연결 (EKS access entry에 해당) → `20-access.md`
+- [ ] 21. 클러스터 생성 API와 CLI: 사용자가 관리 클러스터를 보지 않고 `create cluster`로 kubeconfig까지 받음 (`aws eks create-cluster`에 해당) → `21-api-cli.md`
+- [ ] 22. etcd 백업과 복구 → `22-etcd-backup.md`
 
 ## Phase 5. 진짜 VM으로 옮기기 (Lima + KubeVirt)
 
-- [ ] 19. Lima VM(nestedVirtualization), kubeadm 관리 클러스터, KubeVirt · 확인: VM 하나를 띄워 SSH 접속 → `19-lima-kubevirt.md`
-- [ ] 20. KubeVirt 드라이버 추가, 10번 통과 → `20-kubevirt-driver.md`
-- [ ] 21. CCM과 CSI 연결 · 확인: LoadBalancer IP로 Mac에서 접속, 파드가 옮겨 가도 PVC 데이터 유지 → `21-ccm-csi.md`
-- [ ] 22. 테넌트 간 네트워크 격리 → `22-isolation.md`
+- [ ] 23. Lima VM(nestedVirtualization), kubeadm 관리 클러스터, KubeVirt · 확인: VM 하나를 띄워 SSH 접속 → `23-lima-kubevirt.md`
+- [ ] 24. KubeVirt 드라이버 추가, 10번 통과 → `24-kubevirt-driver.md`
+- [ ] 25. CCM과 CSI 연결 · 확인: LoadBalancer IP로 Mac에서 접속, 파드가 옮겨 가도 PVC 데이터 유지 → `25-ccm-csi.md`
+- [ ] 26. 테넌트 간 네트워크 격리 → `26-isolation.md`
+- [ ] 27. (선택) 컨트롤 플레인을 클러스터마다 전용 VM에 띄우는 EKS 방식 시도 → `27-dedicated-cp-vm.md`
