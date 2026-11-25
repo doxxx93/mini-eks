@@ -11,7 +11,7 @@
 Kubernetes The Hard Way가 같은 과정을 VM 위에서 진행합니다. 여기서는 컨트롤 플레인을 관리 클러스터의 파드로 띄운다는 점이 다릅니다.
 
 - [x] 1. kind로 관리 클러스터 만들기 · 확인: `kubectl get nodes` → `01-mgmt-cluster.md`
-- [ ] 2. 테넌트용 인증서(PKI) 만들기, 인증서가 왜 여러 개 필요한지 정리 → `02-pki.md`
+- [x] 2. 테넌트용 인증서(PKI) 만들기, 인증서가 왜 여러 개 필요한지 정리 → `02-pki.md`
 - [ ] 3. etcd를 파드로 띄우기 · 확인: etcdctl로 키를 쓰고 읽기 → `03-etcd.md`
 - [ ] 4. kube-apiserver를 파드로 띄우고 노출하기 · 확인: 테넌트 kubeconfig로 `kubectl get ns` → `04-apiserver.md`
 - [ ] 5. controller-manager와 scheduler 띄우기 · 확인: Deployment를 만들면 ReplicaSet과 파드는 생기지만 노드가 없어서 파드가 Pending → `05-cm-scheduler.md`

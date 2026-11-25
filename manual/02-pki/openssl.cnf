@@ -1,0 +1,48 @@
+# x509v3 extensions for the tenant-a certificates.
+# Used as: openssl x509 -req ... -extfile manual/02-pki/openssl.cnf -extensions <section>
+
+[ ca ]
+basicConstraints = critical, CA:TRUE
+keyUsage = critical, keyCertSign, cRLSign, digitalSignature
+subjectKeyIdentifier = hash
+
+[ client ]
+basicConstraints = critical, CA:FALSE
+keyUsage = critical, digitalSignature, keyEncipherment
+extendedKeyUsage = clientAuth
+
+[ etcd ]
+basicConstraints = critical, CA:FALSE
+keyUsage = critical, digitalSignature, keyEncipherment
+extendedKeyUsage = serverAuth, clientAuth
+subjectAltName = @etcd_names
+
+[ etcd_names ]
+DNS.1 = localhost
+DNS.2 = etcd
+DNS.3 = etcd.tenant-a
+DNS.4 = etcd.tenant-a.svc
+DNS.5 = etcd.tenant-a.svc.cluster.local
+DNS.6 = *.etcd.tenant-a.svc
+DNS.7 = *.etcd.tenant-a.svc.cluster.local
+IP.1 = 127.0.0.1
+
+[ apiserver ]
+basicConstraints = critical, CA:FALSE
+keyUsage = critical, digitalSignature, keyEncipherment
+extendedKeyUsage = serverAuth
+subjectAltName = @apiserver_names
+
+[ apiserver_names ]
+DNS.1 = kubernetes
+DNS.2 = kubernetes.default
+DNS.3 = kubernetes.default.svc
+DNS.4 = kubernetes.default.svc.cluster.local
+DNS.5 = kube-apiserver
+DNS.6 = kube-apiserver.tenant-a
+DNS.7 = kube-apiserver.tenant-a.svc
+DNS.8 = kube-apiserver.tenant-a.svc.cluster.local
+DNS.9 = localhost
+DNS.10 = mgmt-control-plane
+IP.1 = 10.32.0.1
+IP.2 = 127.0.0.1

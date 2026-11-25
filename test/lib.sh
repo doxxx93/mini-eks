@@ -41,3 +41,4 @@ json_field() { sed -n "s/.*\"$1\": *\"\([^\"]*\)\".*/\1/p" | head -n 1; }
 # Read by the scripts that source this file.
 export MGMT_CLUSTER=${MGMT_CLUSTER:-mgmt}
 export MGMT_CONTEXT=kind-$MGMT_CLUSTER
+export TENANT=${TENANT:-tenant-a}
