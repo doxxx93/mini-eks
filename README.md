@@ -86,6 +86,19 @@ OrbStack 내장 Kubernetes를 관리 클러스터로 쓰는 것도 가능하지�
 
 Go와 Rust 구현은 같은 CRD를 쓰고, 언어와 무관한 같은 검증 스크립트를 통과해야 합니다. Go로 먼저 만들고 Rust가 뒤따라갑니다.
 
+## 따라 하기
+
+처음 따라 하는 사람도 단계마다 결과를 스스로 확인할 수 있도록 검사 스크립트를 둡니다. 필요한 것은 Docker 런타임(OrbStack, Docker Desktop 등)과 [mise](https://mise.jdx.dev)입니다.
+
+```sh
+mise trust && mise install   # mise.toml에 고정한 kubectl, kind, shellcheck 설치
+mise run doctor              # Docker 연결과 도구 버전 확인
+mise run check 01            # 01번 단계의 확인 항목 검사
+mise run check               # 처음부터 차례로 검사해서 어디까지 왔는지 확인
+```
+
+검사 스크립트는 단계를 대신 해 주지 않고 결과만 확인합니다. 실패하면 무엇이 틀렸고 어디를 보면 되는지 알려 줍니다. 관리 클러스터 이름은 `mgmt`로 가정하며, 다른 이름을 썼다면 `MGMT_CLUSTER=<이름> mise run check 01`처럼 실행합니다. Phase 1의 명령은 직접 입력해 보는 것이 목적이므로 task로 감싸 두지 않습니다.
+
 ## Phase 4 구현 방향
 
 Phase 4의 기능도 Phase 2와 같은 기술(컨트롤러와 API 서버)로 구현합니다.
@@ -104,7 +117,7 @@ STEPS.md, README.md
 notes/NN-*.md        단계마다 남기는 글
 manual/NN-slug/      Phase 1에서 손으로 적용한 매니페스트와 명령 (그 단계에서 추가한 것만)
 api/                 Go와 Rust가 함께 쓰는 CRD YAML
-test/                언어와 무관한 검증 스크립트
+test/                언어와 무관한 검증 스크립트 (test/steps/NN-*.sh가 단계별 확인 항목)
 go/                  Go 구현 (단계마다 계속 발전)
 rust/                Rust 구현 (단계마다 계속 발전)
 ```

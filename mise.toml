@@ -3,3 +3,16 @@
 kubectl = "1.37"
 kind = "0.33.0"
 shellcheck = "0.11.0"
+
+[tasks.doctor]
+description = "Check Docker and the pinned tool versions before step 01"
+run = "test/doctor.sh"
+
+[tasks.check]
+description = "Check a step's result, or every step in order when no step is given"
+usage = 'arg "[step]" help="Step number, e.g. 01"'
+run = 'test/check.sh ${usage_step:-}'
+
+[tasks.lint]
+description = "Run shellcheck on every shell script"
+run = "test/lint.sh"
