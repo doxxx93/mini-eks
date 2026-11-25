@@ -4,7 +4,7 @@
 
 ## Phase 0. 큰 그림
 
-- [ ] 0. `README.md`를 읽고 무엇을 만드는지 내 말로 정리 → `00-big-picture.md`
+- [x] 0. `README.md`를 읽고 무엇을 만드는지 내 말로 정리 → `00-big-picture.md`
 
 ## Phase 1. 손으로 테넌트 클러스터 하나 만들기 (kind, 코드 없음)
 
