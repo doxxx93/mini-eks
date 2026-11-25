@@ -1,0 +1,4 @@
+[tools]
+# kind v0.33.0 defaults to kindest/node:v1.37.0; kubectl must stay within one minor of the apiserver.
+kubectl = "1.37"
+kind = "0.33.0"

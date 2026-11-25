@@ -1,0 +1,5 @@
+# Phase 1 generates private keys and admin kubeconfigs; keep them out of git.
+*.key
+*.kubeconfig
+kubeconfig
+pki/
